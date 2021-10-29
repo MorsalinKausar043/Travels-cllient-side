@@ -24,7 +24,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg sticky-top navbar-light bg-light">
                 <div className="container">
                     <NavLink className="navbar-brand" to="/">
                         <img src={logo_img} alt="logo_imgages" />
