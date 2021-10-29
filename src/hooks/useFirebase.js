@@ -19,6 +19,7 @@ const useFirebase = () => {
     const HandleGithubSignUp = () => {
         signInWithPopup(auth, githubProvider)
             .then(result => setUser(result.user))
+            .catch(err => console.log(err))
     };
 
     const logOut = () => signOut(auth);

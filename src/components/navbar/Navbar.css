@@ -1,0 +1,38 @@
+.login_btn{
+    padding: 7px 12px;
+    outline: none;
+    border-radius: 7px;
+    color: rgb(26, 128, 212);
+    border: 2px solid rgb(26, 128, 212);
+    position: relative;
+    transition: all .4s linear;
+}
+
+.login_btn:hover{
+    background: rgb(26, 128, 212);
+    color: white;
+}
+
+.nav_list{
+    font-size: 15px;
+}
+
+.nav_list::after{
+    content: "";
+    width: 0%;
+    height: 2px;
+    margin: auto;
+    display: block;
+    background: rgba(0, 0, 0, 0.74);
+    transition: all .4s ease-in;
+}
+
+.nav_list:hover::after{
+    width: 100%;
+}
+
+.profile_photo{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
