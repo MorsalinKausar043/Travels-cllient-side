@@ -13,12 +13,8 @@ const Navbar = () => {
     const static_images = "https://i.ibb.co/q0QVrCN/images-2.jpg";
 
     const LogOut = () => {
-        const confirm_logOut = window.confirm("To log out?")
-        if (confirm_logOut)
-        {
-            logOut()
-            .then(() => history.push("/")) 
-        }
+        logOut()
+        .then(() => history.push("/"))  
     }
 
 
@@ -44,7 +40,7 @@ const Navbar = () => {
                             <NavLink className="nav-link nav_list text-dark" to="/manageorder">Manage All Orders</NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link nav_list text-dark" to="/addorder">Add Service</NavLink>
+                            <NavLink className="nav-link nav_list text-dark" to="/addservice">Add Service</NavLink>
                         </li>
                     </ul>
                     <div>
@@ -53,7 +49,7 @@ const Navbar = () => {
                                 
                                 <div className="d-flex">
                                     <p className="my-auto">{displayName}</p>
-                                    <img src={photoURL || static_images} className="profile_photo mx-3 shadow" alt="profile images" />
+                                    <img src={photoURL || static_images} alt="profile_img" className="profile_photo shadow mx-3" />
                                     <button className="login_btn" onClick={LogOut}>Log Out</button>
                                 </div>
                                     :

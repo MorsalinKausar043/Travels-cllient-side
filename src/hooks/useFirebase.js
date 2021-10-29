@@ -11,16 +11,9 @@ const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
-    const HandleGoogleSignUp = () => {
-        signInWithPopup(auth, googleProvider)
-        .then(result => setUser(result.user))
-    }
+    const HandleGoogleSignUp = () => signInWithPopup(auth, googleProvider);
 
-    const HandleGithubSignUp = () => {
-        signInWithPopup(auth, githubProvider)
-            .then(result => setUser(result.user))
-            .catch(err => console.log(err))
-    };
+    const HandleGithubSignUp = () => signInWithPopup(auth, githubProvider);
 
     const logOut = () => signOut(auth);
 
