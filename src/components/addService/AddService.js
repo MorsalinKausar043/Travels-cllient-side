@@ -31,7 +31,6 @@ const AddService = () => {
                     alert('added successfully');
                 }
             })
-            setData("")
         } else
         {
             alert("please fill the input box!")

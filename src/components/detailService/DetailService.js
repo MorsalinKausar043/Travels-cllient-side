@@ -13,7 +13,6 @@ const DetailService = () => {
                     {
                         services.filter(crrVal => crrVal._id === id).map(crrElm => <SingleDetails key={crrElm._id} {...crrElm}/>)
                     }
-                    <div className="col-10 mx-auto col-md-4"></div>
                 </div>
             </div>
         </>

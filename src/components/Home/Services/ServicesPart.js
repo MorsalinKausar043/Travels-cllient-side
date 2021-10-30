@@ -12,9 +12,8 @@ const ServicesPart = ({ _id, title, body, src, status }) => {
                     <div class="card-body">
                         <h5 class="card-title">{title}</h5>
                         <p class="card-text">{body.slice(0, 200)}</p>
-                        <div className="d-flex justify-content-around">
+                        <div className="text-start">
                             <NavLink to={`service/${_id}`} className="btn btn-outline-danger">See More</NavLink>
-                            <p className="service_status my-auto">status : {status}</p>
                         </div>
                     </div>
                 </div>

@@ -6,6 +6,8 @@ import ErrorPage from '../components/errorPage/ErrorPage';
 import Footer from '../components/footer/Footer';
 import Home from '../components/Home/Home';
 import Login from '../components/login/Login';
+import ManageOrder from '../components/manageAllOrder/ManageOrder';
+import Myorder from '../components/myOrder/Myorder';
 import Navbar from '../components/navbar/Navbar';
 import PrivateRoute from '../components/privateRoute/PrivateRoute';
 import AuthProvider from "../context/AuthProvider";
@@ -25,6 +27,12 @@ const Routes = () => {
                         </PrivateRoute>
                         <PrivateRoute path="/service/:id">
                             <DetailService/>
+                        </PrivateRoute>
+                        <PrivateRoute path="/myorder">
+                            <Myorder/>
+                        </PrivateRoute>
+                        <PrivateRoute path="/manageorder">
+                            <ManageOrder/>
                         </PrivateRoute>
                         <Route exact path="*" component={ErrorPage} />
                     </Switch>
