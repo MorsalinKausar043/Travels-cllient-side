@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import useGetApi from '../../hooks/useGetApi';
 
 const ManageOrder = () => {
 
     const [showCart, setShowCart] = useState([]);
     const [status, setStatus] = useState("Approved");
+    const { loading} = useGetApi();
 
     useEffect(() =>
         fetch("http://localhost:8000/cart")
@@ -12,7 +14,7 @@ const ManageOrder = () => {
         , []);
     
     const deleteClickHandle = async (id) => {
-        const deletes = window.confirm("Do You Delete This Packages?")// http://localhost:8000/cart/${id}
+        const deletes = window.confirm("Do You Delete This Packages?");
         if (deletes)
         {
             const url = `http://localhost:8000/cart/${id}`;
@@ -30,12 +32,45 @@ const ManageOrder = () => {
         }
     };
 
+    const updateStatusData = id => {
+        const confirmApproved = window.confirm("Do You Approved this Package!");
+        if (confirmApproved)
+        {
+            const url = `http://localhost:8000/cart/${id}`;
+            fetch(url, {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify({status})
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0)
+                {
+                    window.location.reload();
+            }
+        })
+        }
+    };
+
     return (
         <>
             <div className="container py-5">
                 <h2 className="fw-bold mb-5">Manage All Order :</h2>
                 <div className="row">
                     {
+                        loading ?
+                        <div className="container">
+                                <div className="row">
+                                    <div className="col-10 mx-auto col-md-4 text-center">
+                                        <div class="spinner-border text-danger" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            :
                         showCart.map(crrElm => {
                             
                             return (
@@ -50,7 +85,7 @@ const ManageOrder = () => {
                                                 <p class="card-text"><small class="text-muted">Status : {crrElm.status}</small></p>
                                             <div className="">
                                                 <button onClick={_=> deleteClickHandle(crrElm._id)} className="btn btn-danger me-3">Delete</button>
-                                                <input type="button" className="btn btn-outline-danger" value="Approved" />
+                                                <input onClick={_=>updateStatusData(crrElm._id)} type="button" className="btn btn-outline-danger" value="Approved" />
                                             </div>
                                         </div>
                                         </div>

@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import useAuth from "../../hooks/useAuth";
 import { FcGoogle } from 'react-icons/fc';
 import { GoMarkGithub } from 'react-icons/go';
@@ -8,7 +8,7 @@ import "./login.css";
 
 const Login = () => {
 
-    const { HandleGithubSignUp, HandleGoogleSignUp } = useAuth();
+    const { HandleGithubSignUp, HandleGoogleSignUp , setIsLoading } = useAuth();
     const history = useHistory();
     const location = useLocation();
     const redirect_location = location.state?.from || "/home";
@@ -17,16 +17,15 @@ const Login = () => {
         HandleGoogleSignUp()
             .then(() => {
                 history.push(redirect_location)
-            });
+            }).finally(_ => setIsLoading(false));
     };
 
     const GithubSignUp = () => {
         HandleGithubSignUp()
-            .then(() => {
-                history.push(redirect_location)
-            });
+        .then(() => {
+            history.push(redirect_location)
+        }).finally(_ => setIsLoading(false));
     }
-
 
     return (
         <>

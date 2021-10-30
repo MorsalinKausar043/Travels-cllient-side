@@ -7,13 +7,20 @@ firebaseAuthentication();
 const useFirebase = () => {
     
     const [user , setUser] = useState({})
+    const [isLoading , setIsLoading] = useState(true)
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
-    const HandleGoogleSignUp = () => signInWithPopup(auth, googleProvider);
+    const HandleGoogleSignUp = () => {
+        setIsLoading(false);
+        return signInWithPopup(auth, googleProvider);
+    };
 
-    const HandleGithubSignUp = () => signInWithPopup(auth, githubProvider);
+    const HandleGithubSignUp = () => {
+        setIsLoading(false);
+        return signInWithPopup(auth, githubProvider);
+    };
 
     const logOut = () => signOut(auth);
 
@@ -28,6 +35,7 @@ const useFirebase = () => {
               
                 setUser({})
             }
+            setIsLoading(false)
           })
         , [auth])
 
@@ -35,7 +43,9 @@ const useFirebase = () => {
         user,
         HandleGithubSignUp,
         HandleGoogleSignUp,
-        logOut
+        logOut,
+        isLoading,
+        setIsLoading
     }
 }
 

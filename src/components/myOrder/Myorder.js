@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from "../../hooks/useAuth";
+import useGetApi from '../../hooks/useGetApi';
 import "./myorder.css";
 
 const Myorder = () => {
@@ -8,6 +9,7 @@ const Myorder = () => {
     const { user: { uid } } = useAuth();
     const [showCart, setShowCart] = useState([]);
     const [status, setStatus] = useState("Approved");
+    const { loading} = useGetApi();
     
 
     useEffect(() =>
@@ -51,7 +53,7 @@ const Myorder = () => {
             .then(data => {
                 if (data.modifiedCount > 0)
                 {
-                    alert("Your Package Approved");
+                    window.location.reload();
             }
         })
         }
@@ -64,6 +66,17 @@ const Myorder = () => {
                 <h2 className="fw-bold mb-5">Your Order :</h2>
                 <div className="row">
                     {
+                        loading ?
+                        <div className="container">
+                                <div className="row">
+                                    <div className="col-10 mx-auto col-md-4 text-center">
+                                        <div class="spinner-border text-danger" role="status">
+                                            <span class="visually-hidden">Loading...</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            :
                         showCart.filter(crrVal => crrVal.user_uid === uid).map(crrElm => {
                             return (
                                 <div key={crrElm._id} class="card mb-3 mx-3" style={{maxWidth: "530px"}}>

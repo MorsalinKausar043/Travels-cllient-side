@@ -13,7 +13,7 @@ const ServicesPart = ({ _id, title, body, src, status }) => {
                         <h5 class="card-title">{title}</h5>
                         <p class="card-text">{body.slice(0, 200)}</p>
                         <div className="text-start">
-                            <NavLink to={`service/${_id}`} className="btn btn-outline-danger">See More</NavLink>
+                            <NavLink to={`service/${_id}`} className="btn btn-outline-danger">Booking Now</NavLink>
                         </div>
                     </div>
                 </div>
