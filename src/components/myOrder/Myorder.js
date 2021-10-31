@@ -13,7 +13,7 @@ const Myorder = () => {
     
 
     useEffect(() =>
-        fetch("http://localhost:8000/cart")
+        fetch("https://wicked-werewolf-19683.herokuapp.com/cart")
             .then(res => res.json())
             .then((data) => setShowCart(data))
         , []);
@@ -22,7 +22,7 @@ const Myorder = () => {
         const deletes = window.confirm("Do You Delete This Packages?");
         if (deletes)
         {
-            const url = `http://localhost:8000/cart/${id}`;
+            const url = `https://wicked-werewolf-19683.herokuapp.com/cart/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
@@ -41,7 +41,7 @@ const Myorder = () => {
         const confirmApproved = window.confirm("Do You Approved this Package!");
         if (confirmApproved)
         {
-            const url = `http://localhost:8000/cart/${id}`;
+            const url = `https://wicked-werewolf-19683.herokuapp.com/cart/${id}`;
             fetch(url, {
                 method: "PUT",
                 headers: {

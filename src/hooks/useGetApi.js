@@ -6,7 +6,7 @@ const useGetApi = () => {
     const [loading , setLoading ] = useState(true)
 
     const getServices = () => {
-        fetch("http://localhost:8000/services")
+        fetch("https://wicked-werewolf-19683.herokuapp.com/services")
             .then(res => res.json())
             .then(apiData => {
                 if (apiData)

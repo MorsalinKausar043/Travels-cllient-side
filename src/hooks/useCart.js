@@ -6,7 +6,7 @@ const useCart = () => {
     const [showCart, setShowCart] = useState([]);
 
     useEffect(() =>
-        fetch("http://localhost:8000/cart")
+        fetch("https://wicked-werewolf-19683.herokuapp.com/cart")
             .then(res => res.json())
             .then((data) => setShowCart(data))
         , []);
@@ -15,7 +15,7 @@ const useCart = () => {
         const deletes = window.confirm("Do You Delete This Packages?")
         if (deletes)
         {
-            return axios.delete(`http://localhost:8000/cart/${id}`)
+            return axios.delete(`https://wicked-werewolf-19683.herokuapp.com/cart/${id}`)
         }
     };
 

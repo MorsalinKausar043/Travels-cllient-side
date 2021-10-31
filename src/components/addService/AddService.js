@@ -23,7 +23,7 @@ const AddService = () => {
         if (title && body && src)
         {
             data.status = "panding";
-            axios.post('http://localhost:8000/services', data)
+            axios.post('https://wicked-werewolf-19683.herokuapp.com/services', data)
             .then(res => {
                 if (res.data.insertedId)
                 {

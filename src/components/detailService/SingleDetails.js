@@ -33,7 +33,7 @@ const SingleDetails = ({ _id, title, body, src, status }) => {
             bookData.body = body;
             bookData.src = src;
             bookData.status = status;
-            axios.post('http://localhost:8000/cart', bookData)
+            axios.post('https://wicked-werewolf-19683.herokuapp.com/cart', bookData)
             .then(res => {
                 if (res.data.insertedId)
                 {
