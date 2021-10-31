@@ -47,7 +47,6 @@ const SingleDetails = ({ _id, title, body, src, status }) => {
         {
             alert("please fill the Details Box")
         }
-        console.log(bookData)
         
     };
 

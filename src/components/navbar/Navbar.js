@@ -7,16 +7,14 @@ import "./Navbar.css";
 const Navbar = () => {
 
     const history = useHistory()
-    const logo_img = "https://i.ibb.co/BffJjtx/logo-1.png";
     const { user, logOut } = useAuth();
-    const { photoURL , displayName , email} = user;
+    const logo_img = "https://i.ibb.co/BffJjtx/logo-1.png";
     const static_images = "https://i.ibb.co/q0QVrCN/images-2.jpg";
 
     const LogOut = () => {
         logOut()
         .then(() => history.push("/"))  
     }
-
 
     return (
         <>
@@ -45,11 +43,11 @@ const Navbar = () => {
                     </ul>
                     <div>
                             {
-                                email || displayName ?
+                                user.email || user.displayName ?
                                 
                                 <div className="d-flex">
-                                    <p className="my-auto">{displayName}</p>
-                                    <img src={photoURL || static_images} alt="profile_img" className="profile_photo shadow mx-3" />
+                                    <p className="my-auto">{user.displayName}</p>
+                                    <img src={user.photoURL || static_images} alt="profile_img" className="profile_photo shadow mx-3" />
                                     <button className="login_btn" onClick={LogOut}>Log Out</button>
                                 </div>
                                     :

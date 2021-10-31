@@ -24,7 +24,6 @@ const ManageOrder = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('deleted successfully');
                         const remainingUsers = showCart.filter(user => user._id !== id);
                         setShowCart(remainingUsers);
                     }
@@ -48,7 +47,9 @@ const ManageOrder = () => {
             .then(data => {
                 if (data.modifiedCount > 0)
                 {
-                    window.location.reload();
+                    const remainingUsers = showCart.filter(user => user._id === id)[0];
+                    remainingUsers.status = "Approved";
+                    setShowCart([...showCart]);
             }
         })
         }

@@ -29,7 +29,6 @@ const Myorder = () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.deletedCount > 0) {
-                        alert('deleted successfully');
                         const remainingUsers = showCart.filter(user => user._id !== id);
                         setShowCart(remainingUsers);
                     }
@@ -53,12 +52,13 @@ const Myorder = () => {
             .then(data => {
                 if (data.modifiedCount > 0)
                 {
-                    window.location.reload();
+                    const remainingUsers = showCart.filter(user => user._id === id)[0];
+                    remainingUsers.status = "Approved";
+                    setShowCart([...showCart]);
             }
         })
         }
     };
-
 
     return (
         <>
@@ -77,7 +77,7 @@ const Myorder = () => {
                                 </div>
                             </div>
                             :
-                        showCart.filter(crrVal => crrVal.user_uid === uid).map(crrElm => {
+                            showCart.filter(crrVal => crrVal.user_uid === uid).map(crrElm => {
                             return (
                                 <div key={crrElm._id} class="card mb-3 mx-3" style={{maxWidth: "530px"}}>
                                     <div class="row g-0">
