@@ -60,6 +60,7 @@ const Myorder = () => {
         }
     };
 
+
     return (
         <>
             <div className="container py-5">
@@ -87,7 +88,7 @@ const Myorder = () => {
                                         <div class="col-md-8">
                                         <div class="card-body">
                                                 <h5 class="card-title">{crrElm.title}</h5>
-                                                <p class="card-text"><small class="text-muted">Status : {crrElm.status}</small></p>
+                                                <p class="card-text fw-bold"><small>Status : </small><small style={ { color: crrElm.status === "panding" ? 'red' : 'rgb(11, 164, 224)' } } >{crrElm.status}</small></p>
                                             <div className="">
                                                 <button onClick={_=> deleteClickHandle(crrElm._id)} className="btn btn-danger me-3">Delete</button>
                                                 <input onClick={_=>updateStatusData(crrElm._id)} type="button" className="btn btn-outline-danger" value="Approved" />
